@@ -99,9 +99,15 @@ class HashTable:
 
         Fill this in.
         '''
-        
+        self.capacity *= 2
+        prev_storage = self.storage
+        self.storage = [None] * self.capacity
+        pair = None
 
-
+        for pair in prev_storage:
+            while pair is not None:
+                self.insert(pair.key, pair.value)
+                pair = pair.next
 
 if __name__ == "__main__":
     ht = HashTable(2)
